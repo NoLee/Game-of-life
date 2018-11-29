@@ -1,0 +1,36 @@
+body{
+    font-family: Calibri;
+    background-color: lightgray;
+}
+
+h1{
+    text-align: center;
+    margin: 20px;
+}
+
+p{
+    text-align: center;
+    margin: 0;
+}
+textarea{
+    text-align: center;
+}
+
+td{
+    border: 1px solid black;
+    /* padding: 20px; */
+}
+
+button{
+    margin: 50px 10px;
+}
+
+.grid{
+    margin: auto;
+    width: 500px;
+    height: 500px;
+}
+
+.selected{
+    background-color: red;
+}
