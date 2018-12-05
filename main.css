@@ -12,8 +12,16 @@ p{
     text-align: center;
     margin: 0;
 }
-textarea{
+
+input{
     text-align: center;
+    width: 50px;
+}
+
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 td{
@@ -31,6 +39,11 @@ button{
     height: 500px;
 }
 
-.selected{
-    background-color: red;
+.hidden{
+    display: none;
 }
+
+.selected{
+    background-color: darkgoldenrod;
+}
+

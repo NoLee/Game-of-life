@@ -1,10 +1,10 @@
-export{ GameOfLife };
-
-class GameOfLife{
+export class GameOfLife{
 
     grid: number[][];
+    generation:number = 0;
 
     constructor (public height:number,public width:number ){
+        this.grid = [];
     }
 
     /**
@@ -14,10 +14,15 @@ class GameOfLife{
         return x;
     }
 
+    incrementGeneration():void{
+        this.generation ++;
+    }
+
     /**
      * Calculates the live neighbors of a cell
      * @param i Row index for the cell
      * @param j Column index for the cell
+     * @returns the number of live neighbors
      */
     calculateLiveNeighbors(row:number, col:number):number {
         let count=0;
@@ -37,9 +42,8 @@ class GameOfLife{
      * @param j Column index for the cell
      */    
     calculateNextCellState(row:number,col:number){
-        let liveNeighbors:number = this.calculateLiveNeighbors(row,col)
-        let nextCellState:number = undefined;
-
+        let liveNeighbors:number = this.calculateLiveNeighbors(row,col);
+        let nextCellState:number;
         if (this.isAlive(this.grid[row][col])){
             if (liveNeighbors<2 || liveNeighbors>3) nextCellState = 0;
             else nextCellState = 1;
@@ -50,29 +54,11 @@ class GameOfLife{
         }
         return nextCellState;
     }
-}
 
-let GoL2 = new GameOfLife(4,3);
-// GoL.grid = parseHtmlTable();
-GoL2.grid =  [[0,0,0],
-            [0,1,1],
-            [0,1,0],
-            [0,1,0]];
-
-// GoL.grid = GoL.grid.map((row,i) => row.map( (cell,j) => GoL.calculateNextCellState(i,j)));
-
-
-function testing() {
-    document.getElementById("test").innerHTML = " ";
-    
-    for (let i=0;i<GoL2.grid.length;i++){
-        document.getElementById("test").innerHTML += "<br>";
-        for (let j=0;j<GoL2.grid[0].length;j++)
-        {
-            document.getElementById("test").innerHTML += GoL2.grid[i][j].toString();
-        }
+    nextGeneration():number[][]{
+        //Calculate next generation to a new array
+        this.grid = this.grid.map((row,i) => row.map( (cell,j) => this.calculateNextCellState(i,j)));
+        this.incrementGeneration();
+        return this.grid;
     }
-    GoL2.grid = GoL2.grid.map((row,i) => row.map( (cell,j) => GoL2.calculateNextCellState(i,j)));
 }
-
-setInterval(function(){ testing(); }, 1000);
