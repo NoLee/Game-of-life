@@ -14,7 +14,7 @@ $("#drawGrid").click( function (){
 
 $("#start").click(function() {
     let gameofLife = new GameOfLife(height, width);    
-    globalInterval = setInterval(function(){ nextGeneration(gameofLife) }, 1000);
+    globalInterval = setInterval(function(){ nextGeneration(gameofLife) }, 500);
 })
 
 $("#stop").click(function() {
@@ -27,7 +27,7 @@ $("#stop").click(function() {
  */ 
 function nextGeneration(gameOfLife: GameOfLife){
     // Get the grid state from HTML and set it to the gameoflife grid instance
-    gameOfLife.grid = getGrid(gameOfLife);
+    gameOfLife.grid = getHTMLGrid(gameOfLife);
     // Calculate next generation
     let nextGen = gameOfLife.nextGeneration();
     //Redraw HTMl grid
@@ -80,7 +80,7 @@ function drawHTMLGrid(height:number, width:number, gridID:string ): void{
  * Get the grid state from HTML
  * @returns an array with the grid, cell values are [1] if the cell is selected and [0] if it is not
  */
-function getGrid(gameofLife:GameOfLife): number[][] {
+function getHTMLGrid(gameofLife:GameOfLife): number[][] {
     let gridHTML = <HTMLTableElement>document.getElementById("grid");
     let array: number[][] = [];
 

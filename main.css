@@ -29,6 +29,11 @@ td{
     /* padding: 20px; */
 }
 
+td:hover{
+    background-color: darkorchid;
+    cursor: pointer;
+}
+
 button{
     margin: 50px 10px;
 }
@@ -44,6 +49,6 @@ button{
 }
 
 .selected{
-    background-color: darkgoldenrod;
+    background-color: darkorchid;
 }
 
