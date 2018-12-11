@@ -32,7 +32,7 @@ describe("Game of life class has a function that", function () {
         expect(game.calculateNextCellState(3, 1)).toEqual(1); //dead -> alive
         expect(game.calculateNextCellState(0, 0)).toEqual(0); //dead -> dead
     });
-    it('greates the next generation array', function () {
+    it('creates the next generation array', function () {
         var nextGen = [[0, 0, 0, 0, 0],
             [0, 1, 0, 0, 0],
             [1, 1, 1, 1, 0],
